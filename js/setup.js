@@ -20,21 +20,19 @@ function getRandomIndex(array) {
   return array[randomI];
 }
 
-function getRandomWizard(wizardName, wizardSurname, coatColor, eyeColor) {
+function getRandomWizard() {
   var wizard = {};
 
-  var randomName = getRandomIndex(wizardName);
-  var randomSurname = getRandomIndex(wizardSurname);
-  var randomCoatColor = getRandomIndex(coatColor);
-  var randomEyeColor = getRandomIndex(eyeColor);
+  wizard.name = getRandomIndex(WIZARD_NAMES)+ ' ' + getRandomIndex(WIZARD_SURNAMES);
+  wizard.coatColor = getRandomIndex(COAT_COLORS);
+  wizard.eyeColor = getRandomIndex(EYES_COLORS);
 
-  wizard.name = randomName;
-  wizard.surname = randomSurname;
-  wizard.coatColor = randomCoatColor;
-  wizard.eyeColor = randomEyeColor;
+  COAT_COLORS.splice(COAT_COLORS.indexOf(wizard.coatColor), 1);
+  EYES_COLORS.splice(EYES_COLORS.indexOf(wizard.eyeColor), 1);
 
   return wizard;
 }
+
 
 var wizardsArray = [];
 for (var i = 0; i < wizardsNumbers; i++) {
@@ -44,7 +42,7 @@ for (var i = 0; i < wizardsNumbers; i++) {
 function renderWizard(wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyeColor;
 
