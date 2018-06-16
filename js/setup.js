@@ -23,7 +23,7 @@ function getRandomIndex(array) {
 function getRandomWizard() {
   var wizard = {};
 
-  wizard.name = getRandomIndex(WIZARD_NAMES)+ ' ' + getRandomIndex(WIZARD_SURNAMES);
+  wizard.name = getRandomIndex(WIZARD_NAMES) + ' ' + getRandomIndex(WIZARD_SURNAMES);
   wizard.coatColor = getRandomIndex(COAT_COLORS);
   wizard.eyeColor = getRandomIndex(EYES_COLORS);
 
