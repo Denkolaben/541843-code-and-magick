@@ -45,13 +45,15 @@ function onEscStopPropagation(evt) {
 function getRandomColor(array, styleFillSelector, inputSelector, styleBackGroundSelector) {
   var randomColor = getRandomIndex(array);
   if (styleFillSelector === '') {
+    // empty
   } else {
     styleFillSelector.style.fill = randomColor;
   }
   inputSelector.value = randomColor;
   if (styleBackGroundSelector === undefined) {
+    // empty
   } else {
-  styleBackGroundSelector.style.backgroundColor  = randomColor;
+    styleBackGroundSelector.style.backgroundColor = randomColor;
   }
 }
 
