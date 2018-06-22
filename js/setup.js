@@ -4,10 +4,10 @@ var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'К
 var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-var wizardsNumbers = 4;
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var FIREBALLS_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var wizardsNumbers = 4;
 
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
@@ -29,7 +29,6 @@ function openPopup() {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
   userNameInput.addEventListener('keydown', onEscStopPropagation); // Если выбран ввод имени остановить всплытие при нажатие esq
-
 }
 
 function closePopup() {
@@ -43,22 +42,29 @@ function onEscStopPropagation(evt) {
   }
 }
 
+function getRandomColor(array, styleFillSelector, inputSelector, styleBackGroundSelector) {
+  var randomColor = getRandomIndex(array);
+  if (styleFillSelector === '') {
+  } else {
+    styleFillSelector.style.fill = randomColor;
+  }
+  inputSelector.value = randomColor;
+  if (styleBackGroundSelector === undefined) {
+  } else {
+  styleBackGroundSelector.style.backgroundColor  = randomColor;
+  }
+}
+
 wizardCoat.addEventListener('click', function () {
-  var wizardCoatColor = getRandomIndex(COAT_COLORS);
-  wizardCoat.style.fill = wizardCoatColor;
-  wizardCoatInput.value = wizardCoatColor;
+  getRandomColor(COAT_COLORS, wizardCoat, wizardCoatInput);
 });
 
 wizardEye.addEventListener('click', function () {
-  var wiardEyeColor = getRandomIndex(EYES_COLORS);
-  wizardEye.style.fill = wiardEyeColor;
-  wizardEyeInput.value = wiardEyeColor;
+  getRandomColor(EYES_COLORS, wizardEye, wizardEyeInput);
 });
 
 fireBallWrap.addEventListener('click', function () {
-  var fireBallColor = getRandomIndex(FIREBALLS_COLORS);
-  fireBallWrap .style.backgroundColor = fireBallColor;
-  fireBallInput.value = fireBallColor;
+  getRandomColor(FIREBALLS_COLORS, '', fireBallInput, fireBallWrap);
 });
 
 setupOpen.addEventListener('click', function () {
