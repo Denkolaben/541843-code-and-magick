@@ -42,19 +42,29 @@ function onEscStopPropagation(evt) {
   }
 }
 
-function getRandomColor(array, styleFillSelector, inputSelector, styleBackGroundSelector) {
+// function getRandomColor(array, Selector, inputSelector, styleBackGroundSelector) {
+//   var randomColor = getRandomIndex(array);
+//   if (styleFillSelector === '') {
+//     // empty
+//   } else {
+//     styleFillSelector.style.fill = randomColor;
+//   }
+//   inputSelector.value = randomColor;
+//   if (styleBackGroundSelector === undefined) {
+//     // empty
+//   } else {
+//     styleBackGroundSelector.style.backgroundColor = randomColor;
+//   }
+// }
+
+function getRandomColor(array, colorSelector, inputSelector) {
   var randomColor = getRandomIndex(array);
-  if (styleFillSelector === '') {
-    // empty
+  if (colorSelector.matches('.wizard-coat') || colorSelector.matches('.wizard-eyes')) {
+    colorSelector.style.fill = randomColor;
   } else {
-    styleFillSelector.style.fill = randomColor;
+    colorSelector.style.backgroundColor = randomColor;
   }
   inputSelector.value = randomColor;
-  if (styleBackGroundSelector === undefined) {
-    // empty
-  } else {
-    styleBackGroundSelector.style.backgroundColor = randomColor;
-  }
 }
 
 wizardCoat.addEventListener('click', function () {
@@ -66,7 +76,7 @@ wizardEye.addEventListener('click', function () {
 });
 
 fireBallWrap.addEventListener('click', function () {
-  getRandomColor(FIREBALLS_COLORS, '', fireBallInput, fireBallWrap);
+  getRandomColor(FIREBALLS_COLORS, fireBallWrap, fireBallInput);
 });
 
 setupOpen.addEventListener('click', function () {
